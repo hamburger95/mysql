@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  labels:
+    app: {{ include "mysql.name" . }}
+spec:
+  accessModes:
+    - {{ .Values.persistence.mysql.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.mysql.size }}
+  storageClassName: {{ .Values.persistence.storageClass }}
+
+
+
